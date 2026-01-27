@@ -8,12 +8,15 @@ $bg-dark: #0f0f0f;
 $text-light: #e9e6dd;
 $accent: #ff6600;
 $border-dark: #333;
-$dim: #ffffff50;
+$dim: rgba(255, 255, 255, 0.3);
+
 $font-body: "Space Grotesk", sans-serif;
 $font-logo: "Nativera";
 
 // ===== RESET =====
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -23,6 +26,89 @@ html,
 body {
     width: 100%;
     height: 100%;
+    background: $bg-dark;
+    color: $text-light;
+}
+
+// ===== LOADER =====
+#page-loader {
+    position: fixed;
+    inset: 0;
+    background: $bg-dark;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.loader {
+    position: relative;
+    width: 120px;
+    height: 90px;
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: $accent;
+    animation: loading-bounce 0.5s ease-in-out infinite alternate;
+}
+
+.loader::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 45px;
+    height: 7px;
+    border-radius: 4px;
+    box-shadow:
+        0 5px 0 $text-light,
+        -35px 50px 0 $text-light,
+        -70px 95px 0 $text-light;
+    animation: loading-step 1s ease-in-out infinite;
+}
+
+@keyframes loading-bounce {
+    0% {
+        transform: translateX(-50%) scale(1, 0.7);
+    }
+
+    40% {
+        transform: translateX(-50%) scale(0.8, 1.2);
+    }
+
+    60% {
+        transform: translateX(-50%) scale(1, 1);
+    }
+
+    100% {
+        bottom: 140px;
+    }
+}
+
+@keyframes loading-step {
+    0% {
+        box-shadow:
+            0 10px 0 transparent,
+            0 10px 0 $text-light,
+            -35px 50px 0 $text-light,
+            -70px 90px 0 $text-light;
+    }
+
+    100% {
+        box-shadow:
+            0 10px 0 $text-light,
+            -35px 50px 0 $text-light,
+            -70px 90px 0 $text-light,
+            -70px 90px 0 transparent;
+    }
 }
 
 // ===== LAYOUT =====
@@ -34,113 +120,92 @@ body {
 
 // ===== HOME =====
 #home {
-    height: 85vh;
-    background-color: $bg-dark;
+    height: 70vh;
+    background: $bg-dark;
     border-radius: 0 0 3rem 3rem;
-    border-bottom: .2rem solid $border-dark;
+    border-bottom: 2px solid $border-dark;
+}
 
-    .site-header {
-        height: 6.5rem;
+.site-header {
+    height: 6.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.web-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    font-family: $font-logo;
+    color: $text-light;
+    text-decoration: none;
+}
+
+.anchors {
+    display: flex;
+    gap: 2rem;
+
+    a {
         display: flex;
-        align-items: center;
+        gap: 0.5rem;
+        font-family: $font-body;
+        font-size: 0.95rem;
+        color: $dim;
+        text-decoration: none;
+        transition: color 0.3s ease, transform 0.3s ease;
 
-        .web-nav {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            .logo {
-                a {
-                    font-family: $font-logo;
-                    font-size: 1rem;
-                    font-weight: 500;
-                    color: $text-light;
-                    text-decoration: none;
-                    transition: color 0.3s ease;
-
-                    &:hover {
-                        color: $accent;
-                    }
-                }
-            }
-
-            .anchors {
-                display: flex;
-                align-items: center;
-                gap: 2rem;
-
-                a {
-                    display: flex;
-                    align-items: center;
-                    gap: 0.5rem;
-                    font-family: $font-body;
-                    font-size: 0.95rem;
-                    font-weight: 500;
-                    color: $dim;
-                    text-decoration: none;
-                    transition: color 0.3s ease, transform 0.3s ease;
-
-                    i {
-                        font-size: 1rem;
-                        color: $dim;
-                        transition: color 0.3s ease, transform 0.3s ease;
-                    }
-
-                    &:hover {
-                        color: $text-light;
-                        transform: translateX(4px);
-
-                        i {
-                            color: $accent;
-                            transform: translateX(2px);
-                        }
-                    }
-                }
-            }
-
-
-            .cta {
-                .btn-book {
-                    font-family: $font-body;
-                    font-size: 0.95rem;
-                    font-weight: 500;
-                    color: $text-light;
-                    text-decoration: none;
-                    padding: 0.5rem 1.25rem;
-                    border: 1px solid $border-dark;
-                    border-radius: 999px;
-                    transition: all 0.3s ease;
-
-                    &:hover {
-                        color: $accent;
-                        border-color: $accent;
-                    }
-                }
-            }
-        }
-    }
-
-    .home-content {
-        height: calc(85vh - 6.5rem);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        line-height: 6.5rem;
-
-        p {
-            font-family: $font-body;
-            font-size: 1.5rem;
-            font-weight: 500;
-            color: $accent;
-        }
-
-        h1 {
-            font-family: $font-logo;
-            font-size: 12.2rem;
-            font-weight: 600;
+        &:hover {
             color: $text-light;
+            transform: translateX(4px);
+
+            i {
+                color: $accent;
+            }
         }
     }
+}
+
+.btn-book {
+    padding: 0.5rem 1.25rem;
+    border: 1px solid $border-dark;
+    border-radius: 999px;
+    color: $text-light;
+    text-decoration: none;
+    transition: border-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+        border-color: $accent;
+        color: $accent;
+    }
+}
+
+.home-content {
+    height: calc(70vh - 6.5rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    p {
+        font-family: "Michroma", sans-serif;
+        font-size: 2rem;
+        color: $accent;
+    }
+
+    h1 {
+        font-family: $font-logo;
+        font-size: clamp(4rem, 12vw, 12.2rem);
+    }
+}
+
+// ===== ABOUT =====
+#about {
+    min-height: 100vh;
+    background: #fff;
+    color: #000;
 }
