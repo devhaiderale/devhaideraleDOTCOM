@@ -2,25 +2,67 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>devhaiderale</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- ==google fonts== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&display=swap"
-        rel="stylesheet">
-    <!-- ==ends== -->
 
-    <!-- ==remix-icons== -->
+    <!-- Locomotive Scroll -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Michroma&family=Montserrat:wght@100..900&family=Space+Grotesk:wght@300..700&display=swap"
+        rel="stylesheet" />
+
+    <!-- Remix Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet" />
-    <!-- ==ends== -->
+
+    <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    HAIDER ALI
+
+    <main data-scroll-container>
+
+        <section id="home">
+            <div class="container">
+                <header class="site-header">
+                    <nav class="web-nav">
+
+                        <div class="logo">
+                            <a href="mailto:contact@haiderale.dev">
+                                contact@haiderale.dev
+                            </a>
+                        </div>
+
+                        <div class="anchors">
+                            <a href="#about"><i class="ri-user-line"></i>ABOUT</a>
+                            <a href="#work"><i class="ri-code-s-slash-line"></i>WORK</a>
+                            <a href="#testimonials"><i class="ri-rss-line"></i>TESTIMONIALS</a>
+                            <a href="#pricing"><i class="ri-flashlight-line"></i>PRICING</a>
+                        </div>
+
+                        <div class="cta">
+                            <a href="https://calendly.com/devhaiderale/30min" class="btn-book">
+                                Book Call
+                            </a>
+                        </div>
+
+                    </nav>
+                </header>
+                <div class="home-content">
+                    <p>THE NEURAL ARCHITECT</p>
+                    <h1>HAIDER ALE.</h1>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+    <script src="script.js"></script>
 </body>
 
 </html>
