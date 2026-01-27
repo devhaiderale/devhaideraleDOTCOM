@@ -14,14 +14,14 @@ html,
 body {
   width: 100%;
   height: 100%;
-  background: #0f0f0f;
+  background-color: #0f0f0f;
   color: #e9e6dd;
 }
 
 #page-loader {
   position: fixed;
   inset: 0;
-  background: #0f0f0f;
+  background-color: #0f0f0f;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,7 +33,6 @@ body {
   width: 120px;
   height: 90px;
 }
-
 .loader::before {
   content: "";
   position: absolute;
@@ -43,10 +42,9 @@ body {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: #ff6600;
+  background-color: #ff6600;
   animation: loading-bounce 0.5s ease-in-out infinite alternate;
 }
-
 .loader::after {
   content: "";
   position: absolute;
@@ -83,15 +81,30 @@ body {
 }
 .container {
   max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
 }
 
 #home {
-  height: 70vh;
-  background: #0f0f0f;
-  border-radius: 0 0 3rem 3rem;
+  position: relative;
+  overflow: hidden;
+  background-color: #0f0f0f;
+  border-radius: 0 0 5rem 5rem;
   border-bottom: 2px solid #333;
+}
+#home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+  mix-blend-mode: overlay;
+  opacity: 0.65;
+}
+#home > * {
+  position: relative;
+  z-index: 2;
 }
 
 .site-header {
@@ -101,16 +114,16 @@ body {
 }
 
 .web-nav {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
 .logo a {
   font-family: "Nativera";
-  color: #e9e6dd;
   text-decoration: none;
+  color: #e9e6dd;
 }
 
 .anchors {
@@ -138,21 +151,21 @@ body {
   padding: 0.5rem 1.25rem;
   border: 1px solid #333;
   border-radius: 999px;
-  color: #e9e6dd;
   text-decoration: none;
-  transition: border-color 0.3s ease, color 0.3s ease;
+  color: #e9e6dd;
+  transition: color 0.3s ease, border-color 0.3s ease;
 }
 .btn-book:hover {
-  border-color: #ff6600;
   color: #ff6600;
+  border-color: #ff6600;
 }
 
 .home-content {
   height: calc(70vh - 6.5rem);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
   text-align: center;
 }
 .home-content p {
@@ -167,6 +180,48 @@ body {
 
 #about {
   min-height: 100vh;
-  background: #fff;
-  color: #000;
+  background-color: #0f0f0f;
+  padding-top: 6rem;
+}
+#about .about-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+#about .about-header h2 {
+  font-family: "Michroma", sans-serif;
+  font-size: 1.5rem;
+  color: #ff6600;
+  white-space: nowrap;
+}
+#about .about-header span {
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, #ff6600 0%, rgba(255, 102, 0, 0.75) 45%, rgba(255, 102, 0, 0.25) 70%, transparent 100%);
+}
+#about .stats {
+  height: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  margin-top: 4.5rem;
+  border-top: 0.1rem solid #333;
+  border-bottom: 0.1rem solid #333;
+}
+#about .stats h1 {
+  font-family: "Michroma", sans-serif;
+  font-size: 3rem;
+  color: #e9e6dd;
+  transition: color 0.3s ease;
+}
+#about .stats h1:hover {
+  color: #ff6600;
+}
+#about .stats p {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.3);
 }/*# sourceMappingURL=style.css.map */

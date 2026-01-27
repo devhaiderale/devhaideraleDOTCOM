@@ -3,17 +3,16 @@
     src: url("./nativera-medium.ttf") format("truetype");
 }
 
-// ===== VARIABLES =====
+// ================= VARIABLES =================
 $bg-dark: #0f0f0f;
 $text-light: #e9e6dd;
 $accent: #ff6600;
 $border-dark: #333;
 $dim: rgba(255, 255, 255, 0.3);
-
 $font-body: "Space Grotesk", sans-serif;
 $font-logo: "Nativera";
 
-// ===== RESET =====
+// ================= RESET =================
 *,
 *::before,
 *::after {
@@ -26,15 +25,15 @@ html,
 body {
     width: 100%;
     height: 100%;
-    background: $bg-dark;
+    background-color: $bg-dark;
     color: $text-light;
 }
 
-// ===== LOADER =====
+// ================= LOADER =================
 #page-loader {
     position: fixed;
     inset: 0;
-    background: $bg-dark;
+    background-color: $bg-dark;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -45,34 +44,34 @@ body {
     position: relative;
     width: 120px;
     height: 90px;
-}
 
-.loader::before {
-    content: "";
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    background: $accent;
-    animation: loading-bounce 0.5s ease-in-out infinite alternate;
-}
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color: $accent;
+        animation: loading-bounce 0.5s ease-in-out infinite alternate;
+    }
 
-.loader::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 45px;
-    height: 7px;
-    border-radius: 4px;
-    box-shadow:
-        0 5px 0 $text-light,
-        -35px 50px 0 $text-light,
-        -70px 95px 0 $text-light;
-    animation: loading-step 1s ease-in-out infinite;
+    &::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 45px;
+        height: 7px;
+        border-radius: 4px;
+        box-shadow:
+            0 5px 0 $text-light,
+            -35px 50px 0 $text-light,
+            -70px 95px 0 $text-light;
+        animation: loading-step 1s ease-in-out infinite;
+    }
 }
 
 @keyframes loading-bounce {
@@ -111,19 +110,36 @@ body {
     }
 }
 
-// ===== LAYOUT =====
+// ================= LAYOUT =================
 .container {
     max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
 }
 
-// ===== HOME =====
+// ================= HOME =================
 #home {
-    height: 70vh;
-    background: $bg-dark;
-    border-radius: 0 0 3rem 3rem;
+    position: relative;
+    overflow: hidden;
+    background-color: $bg-dark;
+    border-radius: 0 0 5rem 5rem;
     border-bottom: 2px solid $border-dark;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 1;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.12'/%3E%3C/svg%3E");
+        mix-blend-mode: overlay;
+        opacity: 0.65;
+    }
+
+    >* {
+        position: relative;
+        z-index: 2;
+    }
 }
 
 .site-header {
@@ -133,16 +149,16 @@ body {
 }
 
 .web-nav {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 .logo a {
     font-family: $font-logo;
-    color: $text-light;
     text-decoration: none;
+    color: $text-light;
 }
 
 .anchors {
@@ -173,13 +189,13 @@ body {
     padding: 0.5rem 1.25rem;
     border: 1px solid $border-dark;
     border-radius: 999px;
-    color: $text-light;
     text-decoration: none;
-    transition: border-color 0.3s ease, color 0.3s ease;
+    color: $text-light;
+    transition: color 0.3s ease, border-color 0.3s ease;
 
     &:hover {
-        border-color: $accent;
         color: $accent;
+        border-color: $accent;
     }
 }
 
@@ -187,8 +203,8 @@ body {
     height: calc(70vh - 6.5rem);
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     text-align: center;
 
     p {
@@ -203,9 +219,62 @@ body {
     }
 }
 
-// ===== ABOUT =====
+// ================= ABOUT =================
 #about {
     min-height: 100vh;
-    background: #fff;
-    color: #000;
+    background-color: $bg-dark;
+    padding-top: 6rem;
+
+    .about-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        width: 100%;
+
+        h2 {
+            font-family: "Michroma", sans-serif;
+            font-size: 1.5rem;
+            color: $accent;
+            white-space: nowrap;
+        }
+
+        span {
+            flex: 1;
+            height: 2px;
+            background: linear-gradient(to right,
+                    $accent 0%,
+                    rgba($accent, 0.75) 45%,
+                    rgba($accent, 0.25) 70%,
+                    transparent 100%);
+        }
+    }
+
+    .stats {
+        height: 10rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 1.2rem;
+        margin-top: 4.5rem;
+        border-top: .1rem solid $border-dark;
+        border-bottom: .1rem solid $border-dark;
+
+        h1 {
+            font-family: "Michroma", sans-serif;
+            font-size: 3rem;
+            color: $text-light;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $accent;
+            }
+        }
+
+        p {
+            font-family: $font-body;
+            font-size: 0.95rem;
+            color: $dim;
+        }
+    }
 }
