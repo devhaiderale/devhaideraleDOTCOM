@@ -225,6 +225,7 @@ body {
 }
 #about .stats h1:hover {
   color: #ff6600;
+  cursor: pointer;
 }
 #about .stats p {
   font-family: "Space Grotesk", sans-serif;
