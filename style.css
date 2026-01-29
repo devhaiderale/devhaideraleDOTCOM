@@ -246,6 +246,7 @@ body {
      object-fit: cover;
   border-radius: 50%;
   flex-shrink: 0;
+  border: 0.1rem solid #333;
 }
 #about .about-content .glass-box {
   max-width: 32rem;
@@ -301,13 +302,19 @@ body {
   flex-direction: column;
   gap: 1.8rem;
 }
+#about .card-grid .card:hover {
+  transform: translateY(-0.5rem);
+  transition: transform 0.3s ease;
+  border: 1px solid #ff6600;
+}
+#about .card-grid .card:hover i {
+  font-size: 2.2rem;
+  color: #ff6600;
+}
 #about .card-grid .card i {
   font-size: 2.2rem;
   color: rgba(255, 255, 255, 0.12);
   transition: color 0.3s ease;
-}
-#about .card-grid .card i:hover {
-  color: #ff6600;
 }
 #about .card-grid .card h3 {
   font-family: "Michroma", sans-serif;
@@ -346,11 +353,10 @@ body {
   color: #e9e6dd;
   line-height: 1;
   word-spacing: 0.5rem;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, letter-spacing 0.3s ease;
 }
 #about .link h1 a:hover {
   color: #ff6600;
   cursor: pointer;
   letter-spacing: 0.2rem;
-  transition: letter-spacing 0.3s ease;
 }/*# sourceMappingURL=style.css.map */

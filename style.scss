@@ -309,6 +309,7 @@ body {
             object-fit: cover;
             border-radius: 50%;
             flex-shrink: 0;
+            border: .1rem solid $border-dark;
         }
 
         .glass-box {
@@ -371,14 +372,25 @@ body {
             flex-direction: column;
             gap: 1.8rem;
 
+            &:hover {
+                transform: translateY(-0.5rem);
+                transition: transform 0.3s ease;
+                border: 1px solid $accent;
+
+                i {
+                    font-size: 2.2rem;
+                    color: $accent;
+                }
+            }
+
             i {
                 font-size: 2.2rem;
                 color: rgba(255, 255, 255, 0.12);
                 transition: color 0.3s ease;
 
-                &:hover {
-                    color: $accent;
-                }
+                // &:hover {
+                //     color: $accent;
+                // }
             }
 
             h3 {
@@ -423,15 +435,18 @@ body {
                 color: $text-light;
                 line-height: 1;
                 word-spacing: 0.5rem;
-                transition: color 0.3s ease;
+
+                transition:
+                    color 0.3s ease,
+                    letter-spacing 0.3s ease;
 
                 &:hover {
                     color: $accent;
                     cursor: pointer;
                     letter-spacing: 0.2rem;
-                    transition: letter-spacing 0.3s ease;
                 }
             }
+
         }
     }
 }
